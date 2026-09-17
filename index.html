@@ -55,22 +55,18 @@
 </head>
 <body class="text-gray-800 antialiased bg-white font-sans">
     
-    <!-- Header Fijo con Navegación y Logo Personalizado (Hamaca, Edificio, Mar) -->
+    <!-- Header Fijo con Navegación y Logo -->
     <header class="border-b border-gray-200 sticky top-0 bg-white z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
-                <!-- Logotipo vectorial: Edificio + Hamaca + Mar -->
                 <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center border border-rose-100 group-hover:scale-105 transition shadow-sm">
                     <svg class="w-7 h-7 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- Mar (Olas inferiores) -->
                         <path d="M2 18c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
                         <path d="M2 21c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
-                        <!-- Edificio -->
                         <rect x="14" y="5" width="6" height="12" rx="1" />
                         <line x1="16" y1="8" x2="18" y2="8" />
                         <line x1="16" y1="11" x2="18" y2="11" />
                         <line x1="16" y1="14" x2="18" y2="14" />
-                        <!-- Hamaca colgando frente al edificio / mar -->
                         <path d="M3 10c2 3 6 3 8 0" />
                         <path d="M3 10l2 4" />
                         <path d="M11 10l-2 4" />
@@ -98,8 +94,12 @@
             <div class="flex items-center text-sm font-medium mb-6">
                 <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
             </div>
+            
+            <!-- Galería Completa La Serena (5 fotos) -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
-                <div class="md:col-span-2 h-full bg-gray-200"><img src="serena-1.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
+                <div class="md:col-span-2 h-full bg-gray-200">
+                    <img src="serena-1.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
                     <img src="serena-2.jpg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                     <img src="serena-3.jpg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
@@ -109,6 +109,7 @@
                     <img src="serena-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                 </div>
             </div>
+
             <div class="flex flex-col lg:flex-row gap-12 relative">
                 <div class="lg:w-2/3 space-y-6">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-6">
@@ -116,7 +117,6 @@
                     </div>
                     <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de este acogedor departamento frente a la Avenida del Mar en La Serena. Ubicación inmejorable, a pasos de la playa con todas las comodidades. (Estadía mínima de 2 noches).</p>
                     
-                    <!-- Comodidades -->
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Lo que este lugar ofrece</h3>
                         <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
@@ -154,8 +154,12 @@
             <div class="flex items-center text-sm font-medium mb-6">
                 <span class="mr-1 text-rose-500">★</span> 4.9 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
             </div>
+            
+            <!-- Galería Completa Concepción (5 fotos) -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
-                <div class="md:col-span-2 h-full bg-gray-200"><img src="conce-1.jpeg" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
+                <div class="md:col-span-2 h-full bg-gray-200">
+                    <img src="conce-1.jpeg" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
                     <img src="conce-2.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                     <img src="conce-3.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
@@ -165,6 +169,7 @@
                     <img src="conce-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                 </div>
             </div>
+
             <div class="flex flex-col lg:flex-row gap-12 relative">
                 <div class="lg:w-2/3 space-y-6">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-6">
@@ -172,7 +177,6 @@
                     </div>
                     <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo, con excelente conectividad. (Estadía mínima de 2 noches).</p>
                     
-                    <!-- Comodidades -->
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Lo que este lugar ofrece</h3>
                         <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
@@ -228,10 +232,25 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer con Logo Incorporado -->
     <footer class="bg-gray-100 border-t border-gray-200 mt-24 py-12 text-center text-gray-500 text-sm">
-        <div class="max-w-7xl mx-auto px-4 space-y-4">
-            <p class="font-bold text-lg text-gray-700">Refugio del Mar</p>
+        <div class="max-w-7xl mx-auto px-4 space-y-4 flex flex-col items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-rose-50 rounded-lg flex items-center justify-center border border-rose-100 shadow-sm">
+                    <svg class="w-5 h-5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 18c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
+                        <path d="M2 21c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
+                        <rect x="14" y="5" width="6" height="12" rx="1" />
+                        <line x1="16" y1="8" x2="18" y2="8" />
+                        <line x1="16" y1="11" x2="18" y2="11" />
+                        <line x1="16" y1="14" x2="18" y2="14" />
+                        <path d="M3 10c2 3 6 3 8 0" />
+                        <path d="M3 10l2 4" />
+                        <path d="M11 10l-2 4" />
+                    </svg>
+                </div>
+                <span class="font-bold text-lg text-gray-700">Refugio del Mar</span>
+            </div>
             <p>Arriendos temporales en La Serena y Concepción · Contacto directo: +56 9 4968 1748</p>
             <p>© 2026 Refugio del Mar. Todos los derechos reservados.</p>
         </div>
