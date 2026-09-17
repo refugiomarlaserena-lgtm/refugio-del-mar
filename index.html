@@ -60,6 +60,28 @@
             const texto = `Hola, mi nombre es *${nombre}*.\nConsulta: ${mensaje}`;
             window.open(`https://wa.me/56949681748?text=${encodeURIComponent(texto)}`, '_blank');
         }
+
+        // Control del Menú Móvil
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Funciones para compartir en RRSS
+        function compartirWhatsApp(propiedad) {
+            const texto = `¡Mira este increíble departamento en *Refugio del Mar (${propiedad})*! 🏖️✨ Consulta más detalles y reserva aquí: ${window.location.href}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank');
+        }
+
+        function compartirFacebook(propiedad) {
+            const url = window.location.href;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function copiarEnlace() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("¡Enlace copiado al portapapeles! 📋 Ya puedes pegarlo y compartirlo.");
+        }
     </script>
     <style>
         .main-photo { transition: opacity 0.15s ease-in-out; }
@@ -84,7 +106,7 @@
 </head>
 <body class="text-gray-800 antialiased bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 font-sans min-h-screen">
     
-    <!-- Header Fijo con Glassmorphism -->
+    <!-- Header Fijo con Menú Móvil y Glassmorphism -->
     <header class="border-b border-white/40 sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
@@ -106,12 +128,29 @@
                     <span class="text-xs text-gray-400 font-medium tracking-wide">La Serena & Concepción</span>
                 </div>
             </a>
+
+            <!-- Navegación Escritorio -->
             <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
                 <a href="#serena" class="hover:text-rose-600 px-3 py-2 rounded-full transition">La Serena</a>
                 <a href="#concepcion" class="hover:text-rose-600 px-3 py-2 rounded-full transition">Concepción</a>
                 <a href="#contacto" class="hover:text-rose-600 px-3 py-2 rounded-full transition">Contacto</a>
                 <a href="https://wa.me/56949681748" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full transition flex items-center gap-2 shadow-sm font-semibold">📱 WhatsApp</a>
             </nav>
+
+            <!-- Botón Menú Hamburguesa Móvil -->
+            <button onclick="toggleMenu()" class="md:hidden p-2 rounded-xl bg-rose-50 text-rose-500 border border-rose-100 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-gray-200 px-6 py-4 space-y-3 shadow-xl">
+            <a href="#serena" onclick="toggleMenu()" class="block text-gray-700 font-medium py-2 hover:text-rose-500">📍 La Serena</a>
+            <a href="#concepcion" onclick="toggleMenu()" class="block text-gray-700 font-medium py-2 hover:text-rose-500">📍 Concepción</a>
+            <a href="#contacto" onclick="toggleMenu()" class="block text-gray-700 font-medium py-2 hover:text-rose-500">✉️ Contacto</a>
+            <a href="https://wa.me/56949681748" target="_blank" class="block text-center bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow-md">📱 WhatsApp Directo</a>
         </div>
     </header>
 
@@ -119,7 +158,15 @@
         
         <!-- ================= LA SERENA ================= -->
         <section id="serena">
-            <h1 class="text-3xl font-semibold mb-2">Acogedor departamento frente a la Avenida del Mar de La Serena</h1>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
+                <h1 class="text-3xl font-semibold">Acogedor departamento frente a la Avenida del Mar de La Serena</h1>
+                <!-- Botones Compartir RRSS -->
+                <div class="flex items-center gap-2">
+                    <button onclick="compartirWhatsApp('La Serena')" class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full font-medium hover:bg-emerald-100 transition flex items-center gap-1">💬 Compartir</button>
+                    <button onclick="compartirFacebook('La Serena')" class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full font-medium hover:bg-blue-100 transition flex items-center gap-1">📘 Facebook</button>
+                    <button onclick="copiarEnlace()" class="text-xs bg-gray-100 text-gray-700 border border-gray-300 px-3 py-1.5 rounded-full font-medium hover:bg-gray-200 transition flex items-center gap-1">🔗 Copiar</button>
+                </div>
+            </div>
             <div class="flex items-center text-sm font-medium mb-6">
                 <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
             </div>
@@ -189,7 +236,15 @@
 
         <!-- ================= CONCEPCIÓN ================= -->
         <section id="concepcion">
-            <h1 class="text-3xl font-semibold mb-2">Increíble espacio en el centro de Concepción</h1>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
+                <h1 class="text-3xl font-semibold">Increíble espacio en el centro de Concepción</h1>
+                <!-- Botones Compartir RRSS -->
+                <div class="flex items-center gap-2">
+                    <button onclick="compartirWhatsApp('Concepción')" class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full font-medium hover:bg-emerald-100 transition flex items-center gap-1">💬 Compartir</button>
+                    <button onclick="compartirFacebook('Concepción')" class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full font-medium hover:bg-blue-100 transition flex items-center gap-1">📘 Facebook</button>
+                    <button onclick="copiarEnlace()" class="text-xs bg-gray-100 text-gray-700 border border-gray-300 px-3 py-1.5 rounded-full font-medium hover:bg-gray-200 transition flex items-center gap-1">🔗 Copiar</button>
+                </div>
+            </div>
             <div class="flex items-center text-sm font-medium mb-6">
                 <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
             </div>
@@ -256,7 +311,7 @@
 
         <hr class="border-gray-200">
 
-        <!-- ================= SECCIÓN DE RESEÑAS (Estilo Airbnb) ================= -->
+        <!-- ================= SECCIÓN DE RESEÑAS ================= -->
         <section class="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm space-y-8">
             <div class="text-center md:text-left flex flex-col md:flex-row items-center gap-6 border-b pb-8">
                 <div class="text-6xl font-bold tracking-tighter text-gray-900">5,0</div>
@@ -278,7 +333,6 @@
 
             <!-- Listado de Reseñas -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Reseña 1 -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 bg-rose-500 text-white font-bold rounded-full flex items-center justify-center text-lg">A</div>
@@ -287,7 +341,6 @@
                     <p class="text-gray-600 text-sm leading-relaxed">"El departamento es hermoso y muy bien decorado, se siente muy hogareño. La ubicación es precisa, al lado de la playa y restaurantes muy buenos cerca."</p>
                 </div>
 
-                <!-- Reseña 2 -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 bg-emerald-500 text-white font-bold rounded-full flex items-center justify-center text-lg">C</div>
@@ -296,7 +349,6 @@
                     <p class="text-gray-600 text-sm leading-relaxed">"La ubicación y vista privilegiada al mar enamoró a mis padres. El departamento es tal cual las fotos, impecable, ordenado y comodísimo. Quedaron maravillados."</p>
                 </div>
 
-                <!-- Reseña 3 -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 bg-blue-500 text-white font-bold rounded-full flex items-center justify-center text-lg">P</div>
@@ -305,7 +357,6 @@
                     <p class="text-gray-600 text-sm leading-relaxed">"Departamento muy lindo tal cual como se ve en las fotos, muy cómodo, limpio, completo. Invita a desconectarse y a relajarse, linda vista, tranquilo."</p>
                 </div>
 
-                <!-- Reseña 4 -->
                 <div class="space-y-3">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 bg-purple-500 text-white font-bold rounded-full flex items-center justify-center text-lg">C</div>
