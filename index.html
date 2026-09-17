@@ -44,7 +44,7 @@
             }
         }
 
-        // Función interactiva de galería con soporte para forzar recarga
+        // Función interactiva de galería para PC
         function cambiarFotoPrincipal(idImagenGrande, nuevaSrc) {
             const imgGrande = document.getElementById(idImagenGrande);
             imgGrande.style.opacity = '0';
@@ -64,6 +64,9 @@
     </script>
     <style>
         .main-photo { transition: opacity 0.15s ease-in-out; }
+        /* Ocultar barra de desplazamiento en móvil pero permitir scroll táctil */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="text-gray-800 antialiased bg-white font-sans">
@@ -108,17 +111,27 @@
                 <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
-                <div class="md:col-span-2 h-full bg-gray-200">
+            <!-- Galería Móvil (Carrusel horizontal deslizante) -->
+            <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl">
+                <img src="serena-1.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="serena-2.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="serena-3.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="serena-6.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="serena-7.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+            </div>
+
+            <!-- Galería PC (Interactiva / Dinámica) -->
+            <div class="hidden md:grid grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
+                <div class="col-span-2 h-full bg-gray-200">
                     <img id="img-grande-serena" src="serena-1.jpg" class="main-photo w-full h-full object-cover">
                 </div>
-                <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-2.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-2.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer">
-                    <img src="serena-3.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-3.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer">
+                <div class="flex flex-col gap-2 h-full">
+                    <img src="serena-2.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-2.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                    <img src="serena-3.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-3.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                 </div>
-                <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-6.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-6.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer">
-                    <img src="serena-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer">
+                <div class="flex flex-col gap-2 h-full">
+                    <img src="serena-6.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-6.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                    <img src="serena-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                 </div>
             </div>
 
@@ -160,25 +173,34 @@
 
         <hr class="border-gray-200">
 
-        <!-- ================= CONCEPCIÓN (Ajustado y limpio) ================= -->
+        <!-- ================= CONCEPCIÓN ================= -->
         <section id="concepcion">
             <h1 class="text-3xl font-semibold mb-2">Acogedor departamento en el centro de Concepción</h1>
             <div class="flex items-center text-sm font-medium mb-6">
                 <span class="mr-1 text-rose-500">★</span> 4.9 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
             </div>
             
-            <!-- Galería Concepción optimizada con centrado dinámico -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
-                <div class="md:col-span-2 h-full bg-gray-900 flex items-center justify-center overflow-hidden">
+            <!-- Galería Móvil (Carrusel horizontal deslizante) -->
+            <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl">
+                <img src="conce-2.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="conce-1.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="conce-3.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="conce-4.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+                <img src="conce-7.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+            </div>
+
+            <!-- Galería PC (Interactiva / Dinámica) -->
+            <div class="hidden md:grid grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
+                <div class="col-span-2 h-full bg-gray-900 flex items-center justify-center overflow-hidden">
                     <img id="img-grande-conce" src="conce-2.jpeg" class="main-photo w-full h-full object-cover object-center scale-105">
                 </div>
-                <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-1.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-1.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
-                    <img src="conce-3.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-3.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
+                <div class="flex flex-col gap-2 h-full">
+                    <img src="conce-1.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-1.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                    <img src="conce-3.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-3.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                 </div>
-                <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-4.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-4.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
-                    <img src="conce-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
+                <div class="flex flex-col gap-2 h-full">
+                    <img src="conce-4.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-4.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                    <img src="conce-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                 </div>
             </div>
 
