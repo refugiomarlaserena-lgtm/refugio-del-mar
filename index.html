@@ -6,9 +6,10 @@
     <title>Refugio del Mar | Arriendos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        function calcularTotal(precioNoche, idCheckin, idCheckout, idResultado, idTotalFinal) {
+        function calcularTotal(precioNoche, idCheckin, idCheckout, idResultado, idBtnReserva, nombrePropiedad) {
             const checkin = document.getElementById(idCheckin).value;
             const checkout = document.getElementById(idCheckout).value;
+            const btn = document.getElementById(idBtnReserva);
             
             if (checkin && checkout) {
                 const d1 = new Date(checkin);
@@ -16,18 +17,28 @@
                 const diffTime = d2 - d1;
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 
-                if (diffDays > 0) {
+                if (diffDays >= 2) {
                     const subtotal = diffDays * precioNoche;
                     const limpieza = 15000;
                     const total = subtotal + limpieza;
                     
                     document.getElementById(idResultado).innerHTML = `
-                        <div class="flex justify-between text-gray-600 mb-2"><span>$${precioNoche.toLocaleString()} x ${diffDays} noches</span><span>$${subtotal.toLocaleString()}</span></div>
+                        <div class="flex justify-between text-gray-600 mb-1"><span>$${precioNoche.toLocaleString()} x ${diffDays} noches</span><span>$${subtotal.toLocaleString()}</span></div>
                         <div class="flex justify-between text-gray-600 mb-2"><span>Tarifa de limpieza</span><span>$${limpieza.toLocaleString()}</span></div>
-                        <div class="flex justify-between font-bold text-lg border-t pt-3 mt-3"><span>Total a pagar</span><span>$${total.toLocaleString()}</span></div>
+                        <div class="flex justify-between font-bold text-lg border-t pt-2 mt-2"><span>Total</span><span>$${total.toLocaleString()}</span></div>
                     `;
+
+                    // Habilitar y configurar botón de WhatsApp
+                    const mensaje = `Hola, quiero reservar *${nombrePropiedad}*.\n📅 Desde: ${checkin}\n📅 Hasta: ${checkout}\n🌙 Noches: ${diffDays}\n💰 Total: $${total.toLocaleString()}`;
+                    const urlWhatsApp = `https://wa.me/56949681748?text=${encodeURIComponent(mensaje)}`;
+                    
+                    btn.href = urlWhatsApp;
+                    btn.classList.remove('opacity-50', 'pointer-events-none');
+                    btn.innerText = "Reservar por WhatsApp";
                 } else {
-                    document.getElementById(idResultado).innerHTML = `<p class="text-red-500 text-sm">La salida debe ser posterior a la entrada.</p>`;
+                    document.getElementById(idResultado).innerHTML = `<p class="text-rose-600 font-medium text-sm">⚠️ La estadía mínima es de 2 noches.</p>`;
+                    btn.classList.add('opacity-50', 'pointer-events-none');
+                    btn.innerText = "Selecciona mínimo 2 noches";
                 }
             }
         }
@@ -68,35 +79,33 @@
                     <div class="flex justify-between items-center border-b border-gray-200 pb-6 mb-6">
                         <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">2 camas · 1 baño</p></div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Ven a descansar a nuestro hermoso estudio en La Serena. Ubicación inmejorable, a pasos de la playa con todas las comodidades.</p>
+                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Ven a descansar a nuestro hermoso estudio en La Serena. Ubicación inmejorable, a pasos de la playa con todas las comodidades. (Mínimo 2 noches).</p>
                 </div>
                 <div class="lg:w-1/3">
                     <div class="sticky top-24 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
-                        <div class="text-2xl font-bold mb-4">$45.000 <span class="text-gray-500 text-base font-normal">/ noche</span></div>
+                        <div class="text-2xl font-bold mb-4">$75.000 <span class="text-gray-500 text-base font-normal">/ noche</span></div>
                         
                         <!-- Cotizador La Serena -->
                         <div class="border border-gray-300 rounded-lg p-3 mb-4 space-y-3">
                             <div class="grid grid-cols-2 gap-2">
                                 <div>
                                     <label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label>
-                                    <input type="date" id="in-serena" onchange="calcularTotal(45000, 'in-serena', 'out-serena', 'res-serena')" class="w-full text-sm p-1 border rounded">
+                                    <input type="date" id="in-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-gray-500 uppercase">Salida</label>
-                                    <input type="date" id="out-serena" onchange="calcularTotal(45000, 'in-serena', 'out-serena', 'res-serena')" class="w-full text-sm p-1 border rounded">
+                                    <input type="date" id="out-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded">
                                 </div>
                             </div>
                         </div>
 
                         <div id="res-serena" class="mb-4 text-sm text-gray-500">
-                            Selecciona fechas para calcular el valor total.
+                            Selecciona las fechas (mínimo 2 noches).
                         </div>
 
-                        <!-- Integración Cal.com / Reserva -->
-                        <div class="w-full bg-gray-50 border border-gray-300 rounded-lg flex items-center justify-center mb-4 text-gray-400 text-center p-4 text-xs">
-                            [Aquí pegaremos tu enlace o widget embed de Cal.com para La Serena]
-                        </div>
-                        <button class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition">Reservar La Serena</button>
+                        <a id="btn-serena" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">
+                            Selecciona fechas para reservar
+                        </a>
                     </div>
                 </div>
             </div>
@@ -126,7 +135,7 @@
                     <div class="flex justify-between items-center border-b border-gray-200 pb-6 mb-6">
                         <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">3 camas · 2 baños</p></div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo con excelente conectividad.</p>
+                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo. (Mínimo 2 noches).</p>
                 </div>
                 <div class="lg:w-1/3">
                     <div class="sticky top-24 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
@@ -137,24 +146,22 @@
                             <div class="grid grid-cols-2 gap-2">
                                 <div>
                                     <label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label>
-                                    <input type="date" id="in-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce')" class="w-full text-sm p-1 border rounded">
+                                    <input type="date" id="in-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-bold text-gray-500 uppercase">Salida</label>
-                                    <input type="date" id="out-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce')" class="w-full text-sm p-1 border rounded">
+                                    <input type="date" id="out-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded">
                                 </div>
                             </div>
                         </div>
 
                         <div id="res-conce" class="mb-4 text-sm text-gray-500">
-                            Selecciona fechas para calcular el valor total.
+                            Selecciona las fechas (mínimo 2 noches).
                         </div>
 
-                        <!-- Integración Cal.com / Reserva -->
-                        <div class="w-full h-48 bg-gray-50 border border-gray-300 rounded-lg flex items-center justify-center mb-4 text-gray-400 text-center p-4 text-xs">
-                            [Aquí pegaremos tu enlace o widget embed de Cal.com para Concepción]
-                        </div>
-                        <button class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition">Reservar Concepción</button>
+                        <a id="btn-conce" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">
+                            Selecciona fechas para reservar
+                        </a>
                     </div>
                 </div>
             </div>
