@@ -44,6 +44,16 @@
             }
         }
 
+        // Función para cambiar la foto principal al hacer clic en las miniaturas
+        function cambiarFotoPrincipal(idImagenGrande, nuevaSrc) {
+            const imgGrande = document.getElementById(idImagenGrande);
+            imgGrande.style.opacity = '0';
+            setTimeout(() => {
+                imgGrande.src = nuevaSrc;
+                imgGrande.style.opacity = '1';
+            }, 150);
+        }
+
         function enviarContacto(event) {
             event.preventDefault();
             const nombre = document.getElementById('c-nombre').value;
@@ -52,6 +62,9 @@
             window.open(`https://wa.me/56949681748?text=${encodeURIComponent(texto)}`, '_blank');
         }
     </script>
+    <style>
+        .main-photo { transition: opacity 0.15s ease-in-out; }
+    </style>
 </head>
 <body class="text-gray-800 antialiased bg-white font-sans">
     
@@ -95,18 +108,18 @@
                 <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
             </div>
             
-            <!-- Galería Completa La Serena (5 fotos) -->
+            <!-- Galería La Serena con interactividad -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
                 <div class="md:col-span-2 h-full bg-gray-200">
-                    <img src="serena-1.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <img id="img-grande-serena" src="serena-1.jpg" class="main-photo w-full h-full object-cover">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-2.jpg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
-                    <img src="serena-3.jpg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="serena-2.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-2.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
+                    <img src="serena-3.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-3.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-6.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
-                    <img src="serena-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="serena-6.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-6.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
+                    <img src="serena-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
                 </div>
             </div>
 
@@ -155,25 +168,25 @@
                 <span class="mr-1 text-rose-500">★</span> 4.9 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
             </div>
             
-            <!-- Galería Completa Concepción (5 fotos) -->
+            <!-- Galería Concepción (Imagen principal mejor centrada y fotos actualizadas sin cama simple) -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
                 <div class="md:col-span-2 h-full bg-gray-200">
-                    <img src="conce-1.jpeg" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    <img id="img-grande-conce" src="conce-1.jpeg" class="main-photo w-full h-full object-cover object-center">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-2.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
-                    <img src="conce-3.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="conce-2.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-2.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
+                    <img src="conce-3.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-3.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-6.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
-                    <img src="conce-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="conce-4.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-4.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
+                    <img src="conce-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-80 transition cursor-pointer" title="Ver foto">
                 </div>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12 relative">
                 <div class="lg:w-2/3 space-y-6">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-6">
-                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">4 huéspedes · 2 dormitorios · 3 camas · 2 baños</p></div>
+                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">4 huéspedes · 2 dormitorios · Cama matrimonial equipada · 2 baños</p></div>
                     </div>
                     <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo, con excelente conectividad. (Estadía mínima de 2 noches).</p>
                     
@@ -232,7 +245,7 @@
 
     </main>
 
-    <!-- Footer con Logo Incorporado -->
+    <!-- Footer con Logo -->
     <footer class="bg-gray-100 border-t border-gray-200 mt-24 py-12 text-center text-gray-500 text-sm">
         <div class="max-w-7xl mx-auto px-4 space-y-4 flex flex-col items-center">
             <div class="flex items-center gap-2">
