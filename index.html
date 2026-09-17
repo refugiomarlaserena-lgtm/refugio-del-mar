@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refugio del Mar | Arriendos</title>
+    <title>Refugio del Mar | Arriendos en La Serena y Concepción</title>
+    <!-- Favicon personalizado SVG (Hamaca, Edificio y Mar) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏖️</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         function calcularTotal(precioNoche, idCheckin, idCheckout, idResultado, idBtnReserva, nombrePropiedad) {
@@ -41,15 +43,49 @@
                 }
             }
         }
+
+        function enviarContacto(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('c-nombre').value;
+            const mensaje = document.getElementById('c-mensaje').value;
+            const texto = `Hola, mi nombre es *${nombre}*.\nConsulta: ${mensaje}`;
+            window.open(`https://wa.me/56949681748?text=${encodeURIComponent(texto)}`, '_blank');
+        }
     </script>
 </head>
 <body class="text-gray-800 antialiased bg-white font-sans">
-    <header class="border-b border-gray-200 sticky top-0 bg-white z-50">
+    
+    <!-- Header Fijo con Navegación y Logo Personalizado (Hamaca, Edificio, Mar) -->
+    <header class="border-b border-gray-200 sticky top-0 bg-white z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="text-rose-500 font-bold text-2xl">Refugio del Mar</div>
-            <nav class="hidden md:flex space-x-4 text-sm font-medium">
-                <a href="#serena" class="hover:bg-gray-100 px-3 py-2 rounded-full transition">La Serena</a>
-                <a href="#concepcion" class="hover:bg-gray-100 px-3 py-2 rounded-full transition">Concepción</a>
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Logotipo vectorial: Edificio + Hamaca + Mar -->
+                <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center border border-rose-100 group-hover:scale-105 transition shadow-sm">
+                    <svg class="w-7 h-7 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Mar (Olas inferiores) -->
+                        <path d="M2 18c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
+                        <path d="M2 21c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
+                        <!-- Edificio -->
+                        <rect x="14" y="5" width="6" height="12" rx="1" />
+                        <line x1="16" y1="8" x2="18" y2="8" />
+                        <line x1="16" y1="11" x2="18" y2="11" />
+                        <line x1="16" y1="14" x2="18" y2="14" />
+                        <!-- Hamaca colgando frente al edificio / mar -->
+                        <path d="M3 10c2 3 6 3 8 0" />
+                        <path d="M3 10l2 4" />
+                        <path d="M11 10l-2 4" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-rose-500 font-bold text-xl block leading-tight">Refugio del Mar</span>
+                    <span class="text-xs text-gray-400 font-medium tracking-wide">La Serena & Concepción</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
+                <a href="#serena" class="hover:text-rose-600 px-3 py-2 rounded-full transition">La Serena</a>
+                <a href="#concepcion" class="hover:text-rose-600 px-3 py-2 rounded-full transition">Concepción</a>
+                <a href="#contacto" class="hover:text-rose-600 px-3 py-2 rounded-full transition">Contacto</a>
+                <a href="https://wa.me/56949681748" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full transition flex items-center gap-2 shadow-sm">📱 WhatsApp</a>
             </nav>
         </div>
     </header>
@@ -60,51 +96,51 @@
         <section id="serena">
             <h1 class="text-3xl font-semibold mb-2">Acogedor departamento frente a la Avenida del Mar de La Serena</h1>
             <div class="flex items-center text-sm font-medium mb-6">
-                <span class="mr-1">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
+                <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden">
-                <div class="md:col-span-2 h-full bg-gray-200"><img src="serena-1.jpg" class="w-full h-full object-cover"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
+                <div class="md:col-span-2 h-full bg-gray-200"><img src="serena-1.jpg" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-2.jpg" class="w-full h-[196px] object-cover bg-gray-200">
-                    <img src="serena-3.jpg" class="w-full h-[196px] object-cover bg-gray-200">
+                    <img src="serena-2.jpg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="serena-3.jpg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-6.jpeg" class="w-full h-[196px] object-cover bg-gray-200">
-                    <img src="serena-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200">
+                    <img src="serena-6.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="serena-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                 </div>
             </div>
             <div class="flex flex-col lg:flex-row gap-12 relative">
-                <div class="lg:w-2/3">
-                    <div class="flex justify-between items-center border-b border-gray-200 pb-6 mb-6">
-                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">2 camas · 1 baño</p></div>
+                <div class="lg:w-2/3 space-y-6">
+                    <div class="flex justify-between items-center border-b border-gray-200 pb-6">
+                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">2 huéspedes · 1 dormitorio · 2 camas · 1 baño</p></div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de este acogedor departamento frente a la Avenida del Mar en La Serena. Ubicación inmejorable, a pasos de la playa con todas las comodidades. (Mínimo 2 noches).</p>
+                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de este acogedor departamento frente a la Avenida del Mar en La Serena. Ubicación inmejorable, a pasos de la playa con todas las comodidades. (Estadía mínima de 2 noches).</p>
+                    
+                    <!-- Comodidades -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Lo que este lugar ofrece</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                            <div class="flex items-center gap-2">📶 Wi-Fi rápido</div>
+                            <div class="flex items-center gap-2">🚗 Estacionamiento incluido</div>
+                            <div class="flex items-center gap-2">🍳 Cocina equipada</div>
+                            <div class="flex items-center gap-2">📺 Televisión por cable</div>
+                            <div class="flex items-center gap-2">🌊 Vista al mar</div>
+                            <div class="flex items-center gap-2">🛡️ Seguridad 24/7</div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="lg:w-1/3">
-                    <div class="sticky top-24 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
+                    <div class="sticky top-28 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
                         <div class="text-2xl font-bold mb-4">$75.000 <span class="text-gray-500 text-base font-normal">/ noche</span></div>
-                        
-                        <!-- Cotizador La Serena -->
                         <div class="border border-gray-300 rounded-lg p-3 mb-4 space-y-3">
                             <div class="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label>
-                                    <input type="date" id="in-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-500 uppercase">Salida</label>
-                                    <input type="date" id="out-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded">
-                                </div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label><input type="date" id="in-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded"></div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Salida</label><input type="date" id="out-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded"></div>
                             </div>
                         </div>
-
-                        <div id="res-serena" class="mb-4 text-sm text-gray-500">
-                            Selecciona las fechas (mínimo 2 noches).
-                        </div>
-
-                        <a id="btn-serena" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">
-                            Selecciona fechas para reservar
-                        </a>
+                        <div id="res-serena" class="mb-4 text-sm text-gray-500">Selecciona las fechas (mínimo 2 noches).</div>
+                        <a id="btn-serena" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">Selecciona fechas para reservar</a>
                     </div>
                 </div>
             </div>
@@ -116,55 +152,89 @@
         <section id="concepcion">
             <h1 class="text-3xl font-semibold mb-2">Acogedor departamento en el centro de Concepción</h1>
             <div class="flex items-center text-sm font-medium mb-6">
-                <span class="mr-1">★</span> 4.9 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
+                <span class="mr-1 text-rose-500">★</span> 4.9 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden">
-                <div class="md:col-span-2 h-full bg-gray-200"><img src="conce-1.jpeg" class="w-full h-full object-cover"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
+                <div class="md:col-span-2 h-full bg-gray-200"><img src="conce-1.jpeg" class="w-full h-full object-cover hover:scale-105 transition duration-500"></div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-2.jpeg" class="w-full h-[196px] object-cover bg-gray-200">
-                    <img src="conce-3.jpeg" class="w-full h-[196px] object-cover bg-gray-200">
+                    <img src="conce-2.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="conce-3.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-6.jpeg" class="w-full h-[196px] object-cover bg-gray-200">
-                    <img src="conce-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200">
+                    <img src="conce-6.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
+                    <img src="conce-7.jpeg" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition">
                 </div>
             </div>
             <div class="flex flex-col lg:flex-row gap-12 relative">
-                <div class="lg:w-2/3">
-                    <div class="flex justify-between items-center border-b border-gray-200 pb-6 mb-6">
-                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">3 camas · 2 baños</p></div>
+                <div class="lg:w-2/3 space-y-6">
+                    <div class="flex justify-between items-center border-b border-gray-200 pb-6">
+                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">4 huéspedes · 2 dormitorios · 3 camas · 2 baños</p></div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo. (Mínimo 2 noches).</p>
+                    <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo, con excelente conectividad. (Estadía mínima de 2 noches).</p>
+                    
+                    <!-- Comodidades -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Lo que este lugar ofrece</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                            <div class="flex items-center gap-2">📶 Wi-Fi Alta Velocidad</div>
+                            <div class="flex items-center gap-2">💼 Espacio de trabajo</div>
+                            <div class="flex items-center gap-2">🍳 Cocina completa</div>
+                            <div class="flex items-center gap-2">🧺 Lavadora</div>
+                            <div class="flex items-center gap-2">🏙️ Vista céntrica</div>
+                            <div class="flex items-center gap-2">🛡️ Acceso controlado</div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="lg:w-1/3">
-                    <div class="sticky top-24 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
+                    <div class="sticky top-28 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
                         <div class="text-2xl font-bold mb-4">$55.000 <span class="text-gray-500 text-base font-normal">/ noche</span></div>
-                        
-                        <!-- Cotizador Concepción -->
                         <div class="border border-gray-300 rounded-lg p-3 mb-4 space-y-3">
                             <div class="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label>
-                                    <input type="date" id="in-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-gray-500 uppercase">Salida</label>
-                                    <input type="date" id="out-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded">
-                                </div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label><input type="date" id="in-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded"></div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Salida</label><input type="date" id="out-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded"></div>
                             </div>
                         </div>
-
-                        <div id="res-conce" class="mb-4 text-sm text-gray-500">
-                            Selecciona las fechas (mínimo 2 noches).
-                        </div>
-
-                        <a id="btn-conce" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">
-                            Selecciona fechas para reservar
-                        </a>
+                        <div id="res-conce" class="mb-4 text-sm text-gray-500">Selecciona las fechas (mínimo 2 noches).</div>
+                        <a id="btn-conce" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">Selecciona fechas para reservar</a>
                     </div>
                 </div>
             </div>
         </section>
+
+        <hr class="border-gray-200">
+
+        <!-- ================= SECCIÓN DE CONTACTO ================= -->
+        <section id="contacto" class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-200">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">¿Tienes alguna duda o consulta especial?</h2>
+                <p class="text-gray-600 mb-8">Escríbenos directamente y te responderemos a la brevedad posible.</p>
+                
+                <form onsubmit="enviarContacto(event)" class="space-y-4 text-left">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tu Nombre</label>
+                        <input type="text" id="c-nombre" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje o Consulta</label>
+                        <textarea id="c-mensaje" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none" placeholder="Hola, quisiera consultar disponibilidad para..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+                        💬 Enviar consulta por WhatsApp
+                    </button>
+                </form>
+            </div>
+        </section>
+
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 mt-24 py-12 text-center text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <p class="font-bold text-lg text-gray-700">Refugio del Mar</p>
+            <p>Arriendos temporales en La Serena y Concepción · Contacto directo: +56 9 4968 1748</p>
+            <p>© 2026 Refugio del Mar. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
