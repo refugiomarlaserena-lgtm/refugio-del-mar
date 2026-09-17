@@ -25,9 +25,9 @@
                     const total = subtotal + limpieza;
                     
                     document.getElementById(idResultado).innerHTML = `
-                        <div class="flex justify-between text-gray-600 mb-1"><span>$${precioNoche.toLocaleString()} x ${diffDays} noches</span><span>$${subtotal.toLocaleString()}</span></div>
-                        <div class="flex justify-between text-gray-600 mb-2"><span>Tarifa de limpieza</span><span>$${limpieza.toLocaleString()}</span></div>
-                        <div class="flex justify-between font-bold text-lg border-t pt-2 mt-2"><span>Total</span><span>$${total.toLocaleString()}</span></div>
+                        <div class="flex justify-between text-gray-700 mb-1"><span>$${precioNoche.toLocaleString()} x ${diffDays} noches</span><span>$${subtotal.toLocaleString()}</span></div>
+                        <div class="flex justify-between text-gray-700 mb-2"><span>Tarifa de limpieza</span><span>$${limpieza.toLocaleString()}</span></div>
+                        <div class="flex justify-between font-bold text-lg border-t border-gray-200 pt-2 mt-2"><span>Total</span><span>$${total.toLocaleString()}</span></div>
                     `;
 
                     const mensaje = `Hola, quiero reservar *${nombrePropiedad}*.\n📅 Desde: ${checkin}\n📅 Hasta: ${checkout}\n🌙 Noches: ${diffDays}\n💰 Total: $${total.toLocaleString()}`;
@@ -44,7 +44,6 @@
             }
         }
 
-        // Función interactiva de galería para PC
         function cambiarFotoPrincipal(idImagenGrande, nuevaSrc) {
             const imgGrande = document.getElementById(idImagenGrande);
             imgGrande.style.opacity = '0';
@@ -66,16 +65,31 @@
         .main-photo { transition: opacity 0.15s ease-in-out; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Estilos Glassmorphism personalizados estilo Copilot */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        .glass-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 247, 250, 0.8));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
-<body class="text-gray-800 antialiased bg-white font-sans">
+<body class="text-gray-800 antialiased bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 font-sans min-h-screen">
     
-    <!-- Header Fijo -->
-    <header class="border-b border-gray-200 sticky top-0 bg-white z-50 shadow-sm">
+    <!-- Header Fijo con Glassmorphism -->
+    <header class="border-b border-white/40 sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center border border-rose-100 group-hover:scale-105 transition shadow-sm">
-                    <svg class="w-7 h-7 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="w-10 h-10 bg-rose-50 rounded-2xl flex items-center justify-center border border-rose-100 group-hover:scale-105 transition shadow-sm">
+                    <svg class="w-6 h-6 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 18c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
                         <path d="M2 21c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
                         <rect x="14" y="5" width="6" height="12" rx="1" />
@@ -96,7 +110,7 @@
                 <a href="#serena" class="hover:text-rose-600 px-3 py-2 rounded-full transition">La Serena</a>
                 <a href="#concepcion" class="hover:text-rose-600 px-3 py-2 rounded-full transition">Concepción</a>
                 <a href="#contacto" class="hover:text-rose-600 px-3 py-2 rounded-full transition">Contacto</a>
-                <a href="https://wa.me/56949681748" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full transition flex items-center gap-2 shadow-sm">📱 WhatsApp</a>
+                <a href="https://wa.me/56949681748" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full transition flex items-center gap-2 shadow-sm font-semibold">📱 WhatsApp</a>
             </nav>
         </div>
     </header>
@@ -111,26 +125,26 @@
             </div>
             
             <!-- Galería Móvil -->
-            <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl">
-                <img src="serena-1.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="serena-2.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="serena-3.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="serena-6.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="serena-7.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+            <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl shadow-lg">
+                <img src="serena-1.jpg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="serena-2.jpg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="serena-3.jpg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="serena-6.jpeg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="serena-7.jpeg" class="min-w-[85%] h-full object-cover rounded-2xl">
             </div>
 
-            <!-- Galería PC -->
-            <div class="hidden md:grid grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
-                <div class="col-span-2 h-full bg-gray-200">
-                    <img id="img-grande-serena" src="serena-1.jpg" class="main-photo w-full h-full object-cover">
+            <!-- Galería PC (Centrada y optimizada estilo visor) -->
+            <div class="hidden md:grid grid-cols-4 gap-2.5 h-[400px] mb-8 rounded-3xl overflow-hidden shadow-xl border border-white/60">
+                <div class="col-span-2 h-full bg-slate-900 flex items-center justify-center overflow-hidden">
+                    <img id="img-grande-serena" src="serena-1.jpg" class="main-photo w-full h-full object-cover object-center scale-105">
                 </div>
-                <div class="flex flex-col gap-2 h-full">
-                    <img src="serena-2.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-2.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
-                    <img src="serena-3.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-3.jpg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                <div class="flex flex-col gap-2.5 h-full">
+                    <img src="serena-2.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-2.jpg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
+                    <img src="serena-3.jpg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-3.jpg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
                 </div>
-                <div class="flex flex-col gap-2 h-full">
-                    <img src="serena-6.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-6.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
-                    <img src="serena-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                <div class="flex flex-col gap-2.5 h-full">
+                    <img src="serena-6.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-6.jpeg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
+                    <img src="serena-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-serena', 'serena-7.jpeg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
                 </div>
             </div>
 
@@ -154,17 +168,18 @@
                     </div>
                 </div>
 
+                <!-- Tarjeta de Reserva con Glassmorphism -->
                 <div class="lg:w-1/3">
-                    <div class="sticky top-28 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
+                    <div class="sticky top-28 glass-card rounded-3xl p-6">
                         <div class="text-2xl font-bold mb-4">$75.000 <span class="text-gray-500 text-base font-normal">/ noche</span></div>
-                        <div class="border border-gray-300 rounded-lg p-3 mb-4 space-y-3">
+                        <div class="border border-white/80 bg-white/50 rounded-2xl p-3 mb-4 space-y-3 shadow-inner">
                             <div class="grid grid-cols-2 gap-2">
-                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label><input type="date" id="in-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded"></div>
-                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Salida</label><input type="date" id="out-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-1 border rounded"></div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label><input type="date" id="in-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-2 bg-white/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-400"></div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Salida</label><input type="date" id="out-serena" onchange="calcularTotal(75000, 'in-serena', 'out-serena', 'res-serena', 'btn-serena', 'La Serena')" class="w-full text-sm p-2 bg-white/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-400"></div>
                             </div>
                         </div>
-                        <div id="res-serena" class="mb-4 text-sm text-gray-500">Selecciona las fechas (mínimo 2 noches).</div>
-                        <a id="btn-serena" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">Selecciona fechas para reservar</a>
+                        <div id="res-serena" class="mb-4 text-sm text-gray-600 font-medium">Selecciona las fechas (mínimo 2 noches).</div>
+                        <a id="btn-serena" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3.5 px-4 rounded-2xl transition shadow-lg opacity-50 pointer-events-none">Selecciona fechas para reservar</a>
                     </div>
                 </div>
             </div>
@@ -172,7 +187,7 @@
 
         <hr class="border-gray-200">
 
-        <!-- ================= CONCEPCIÓN (Sin cama sencilla, con conce-5.jpeg equipada) ================= -->
+        <!-- ================= CONCEPCIÓN ================= -->
         <section id="concepcion">
             <h1 class="text-3xl font-semibold mb-2">Acogedor departamento en el centro de Concepción</h1>
             <div class="flex items-center text-sm font-medium mb-6">
@@ -180,25 +195,25 @@
             </div>
             
             <!-- Galería Móvil -->
-            <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl">
-                <img src="conce-2.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="conce-1.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="conce-5.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="conce-7.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
+            <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl shadow-lg">
+                <img src="conce-2.jpeg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="conce-1.jpeg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="conce-5.jpeg" class="min-w-[85%] h-full object-cover rounded-2xl">
+                <img src="conce-7.jpeg" class="min-w-[85%] h-full object-cover rounded-2xl">
             </div>
 
-            <!-- Galería PC (Interactiva, usando conce-5.jpeg en lugar de la cama simple) -->
-            <div class="hidden md:grid grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
-                <div class="col-span-2 h-full bg-gray-900 flex items-center justify-center overflow-hidden">
+            <!-- Galería PC (Centrada y optimizada) -->
+            <div class="hidden md:grid grid-cols-4 gap-2.5 h-[400px] mb-8 rounded-3xl overflow-hidden shadow-xl border border-white/60">
+                <div class="col-span-2 h-full bg-slate-900 flex items-center justify-center overflow-hidden">
                     <img id="img-grande-conce" src="conce-2.jpeg" class="main-photo w-full h-full object-cover object-center scale-105">
                 </div>
-                <div class="flex flex-col gap-2 h-full">
-                    <img src="conce-1.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-1.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
-                    <img src="conce-5.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-5.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                <div class="flex flex-col gap-2.5 h-full">
+                    <img src="conce-1.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-1.jpeg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
+                    <img src="conce-5.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-5.jpeg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
                 </div>
-                <div class="flex flex-col gap-2 h-full">
-                    <img src="conce-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
-                    <img src="conce-2.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-2.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                <div class="flex flex-col gap-2.5 h-full">
+                    <img src="conce-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-7.jpeg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
+                    <img src="conce-2.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-2.jpeg')" class="w-full h-[194px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer rounded-xl">
                 </div>
             </div>
 
@@ -222,17 +237,18 @@
                     </div>
                 </div>
 
+                <!-- Tarjeta de Reserva con Glassmorphism -->
                 <div class="lg:w-1/3">
-                    <div class="sticky top-28 bg-white border border-gray-200 shadow-xl rounded-2xl p-6">
+                    <div class="sticky top-28 glass-card rounded-3xl p-6">
                         <div class="text-2xl font-bold mb-4">$55.000 <span class="text-gray-500 text-base font-normal">/ noche</span></div>
-                        <div class="border border-gray-300 rounded-lg p-3 mb-4 space-y-3">
+                        <div class="border border-white/80 bg-white/50 rounded-2xl p-3 mb-4 space-y-3 shadow-inner">
                             <div class="grid grid-cols-2 gap-2">
-                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label><input type="date" id="in-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded"></div>
-                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Salida</label><input type="date" id="out-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-1 border rounded"></div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Llegada</label><input type="date" id="in-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-2 bg-white/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-400"></div>
+                                <div><label class="block text-xs font-bold text-gray-500 uppercase">Salida</label><input type="date" id="out-conce" onchange="calcularTotal(55000, 'in-conce', 'out-conce', 'res-conce', 'btn-conce', 'Concepción')" class="w-full text-sm p-2 bg-white/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-400"></div>
                             </div>
                         </div>
-                        <div id="res-conce" class="mb-4 text-sm text-gray-500">Selecciona las fechas (mínimo 2 noches).</div>
-                        <a id="btn-conce" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-4 rounded-lg transition opacity-50 pointer-events-none">Selecciona fechas para reservar</a>
+                        <div id="res-conce" class="mb-4 text-sm text-gray-600 font-medium">Selecciona las fechas (mínimo 2 noches).</div>
+                        <a id="btn-conce" href="#" target="_blank" class="block text-center w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3.5 px-4 rounded-2xl transition shadow-lg opacity-50 pointer-events-none">Selecciona fechas para reservar</a>
                     </div>
                 </div>
             </div>
@@ -240,8 +256,8 @@
 
         <hr class="border-gray-200">
 
-        <!-- ================= CONTACTO ================= -->
-        <section id="contacto" class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-200">
+        <!-- ================= CONTACTO (Estilo Glassmorphism) ================= -->
+        <section id="contacto" class="glass-section rounded-3xl p-8 md:p-12 shadow-xl border border-white">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-4">¿Tienes alguna duda o consulta especial?</h2>
                 <p class="text-gray-600 mb-8">Escríbenos directamente y te responderemos a la brevedad posible.</p>
@@ -249,13 +265,13 @@
                 <form onsubmit="enviarContacto(event)" class="space-y-4 text-left">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Tu Nombre</label>
-                        <input type="text" id="c-nombre" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        <input type="text" id="c-nombre" required class="w-full p-3.5 bg-white/80 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-rose-500 focus:outline-none shadow-sm">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje o Consulta</label>
-                        <textarea id="c-mensaje" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:outline-none" placeholder="Hola, quisiera consultar disponibilidad para..."></textarea>
+                        <textarea id="c-mensaje" rows="4" required class="w-full p-3.5 bg-white/80 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-rose-500 focus:outline-none shadow-sm" placeholder="Hola, quisiera consultar disponibilidad para..."></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-6 rounded-2xl transition shadow-lg flex items-center justify-center gap-2">
                         💬 Enviar consulta por WhatsApp
                     </button>
                 </form>
@@ -264,11 +280,11 @@
 
     </main>
 
-    <!-- Footer con Logo Clickeable al Inicio -->
-    <footer class="bg-gray-100 border-t border-gray-200 mt-24 py-12 text-center text-gray-500 text-sm">
+    <!-- Footer -->
+    <footer class="bg-white/60 backdrop-blur-md border-t border-gray-200 mt-24 py-12 text-center text-gray-500 text-sm">
         <div class="max-w-7xl mx-auto px-4 space-y-4 flex flex-col items-center">
             <a href="#" class="flex items-center gap-2 group hover:opacity-80 transition">
-                <div class="w-8 h-8 bg-rose-50 rounded-lg flex items-center justify-center border border-rose-100 shadow-sm">
+                <div class="w-8 h-8 bg-rose-50 rounded-xl flex items-center justify-center border border-rose-100 shadow-sm">
                     <svg class="w-5 h-5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 18c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
                         <path d="M2 21c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
