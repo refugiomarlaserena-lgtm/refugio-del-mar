@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refugio del Mar | Arriendos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Función inteligente para probar con .jpeg y si falla cargar .jpg automáticamente
+        function checkImage(img, baseName) {
+            img.onerror = function() {
+                if (img.src.includes('.jpeg')) {
+                    img.src = baseName + '.jpg';
+                } else if (img.src.includes('.jpg')) {
+                    img.src = baseName + '.jpeg';
+                }
+            };
+        }
+    </script>
 </head>
 <body class="text-gray-800 antialiased bg-white font-sans">
 
@@ -33,15 +45,15 @@
             <!-- Galería La Serena -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden">
                 <div class="md:col-span-2 h-full bg-gray-200">
-                    <img src="serena-1.jpeg" alt="Vista principal Serena" class="w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer">
+                    <img src="serena-1.jpeg" onerror="checkImage(this, 'serena-1')" alt="Vista principal Serena" class="w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-2.jpeg" alt="Foto Serena 2" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
-                    <img src="serena-3.jpeg" alt="Foto Serena 3" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="serena-2.jpeg" onerror="checkImage(this, 'serena-2')" alt="Foto Serena 2" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="serena-3.jpeg" onerror="checkImage(this, 'serena-3')" alt="Foto Serena 3" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="serena-6.jpeg" alt="Foto Serena 6" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
-                    <img src="serena-7.jpeg" alt="Foto Serena 7" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="serena-6.jpeg" onerror="checkImage(this, 'serena-6')" alt="Foto Serena 6" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="serena-7.jpeg" onerror="checkImage(this, 'serena-7')" alt="Foto Serena 7" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
                 </div>
             </div>
 
@@ -94,15 +106,15 @@
             <!-- Galería Concepción -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden">
                 <div class="md:col-span-2 h-full bg-gray-200">
-                    <img src="conce-1.jpeg" alt="Vista principal Concepción" class="w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer">
+                    <img src="conce-1.jpeg" onerror="checkImage(this, 'conce-1')" alt="Vista principal Concepción" class="w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-2.jpeg" alt="Foto Concepción 2" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
-                    <img src="conce-3.jpeg" alt="Foto Concepción 3" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="conce-2.jpeg" onerror="checkImage(this, 'conce-2')" alt="Foto Concepción 2" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="conce-3.jpeg" onerror="checkImage(this, 'conce-3')" alt="Foto Concepción 3" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
                 </div>
                 <div class="hidden md:flex flex-col gap-2 h-full">
-                    <img src="conce-6.jpeg" alt="Foto Concepción 6" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
-                    <img src="conce-7.jpeg" alt="Foto Concepción 7" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="conce-6.jpeg" onerror="checkImage(this, 'conce-6')" alt="Foto Concepción 6" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
+                    <img src="conce-7.jpeg" onerror="checkImage(this, 'conce-7')" alt="Foto Concepción 7" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-90 transition cursor-pointer">
                 </div>
             </div>
 
