@@ -64,7 +64,6 @@
     </script>
     <style>
         .main-photo { transition: opacity 0.15s ease-in-out; }
-        /* Ocultar barra de desplazamiento en móvil pero permitir scroll táctil */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -111,7 +110,7 @@
                 <span class="mr-1 text-rose-500">★</span> 5.0 · <span class="underline ml-2">La Serena, Coquimbo, Chile</span>
             </div>
             
-            <!-- Galería Móvil (Carrusel horizontal deslizante) -->
+            <!-- Galería Móvil -->
             <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl">
                 <img src="serena-1.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
                 <img src="serena-2.jpg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
@@ -120,7 +119,7 @@
                 <img src="serena-7.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
             </div>
 
-            <!-- Galería PC (Interactiva / Dinámica) -->
+            <!-- Galería PC -->
             <div class="hidden md:grid grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
                 <div class="col-span-2 h-full bg-gray-200">
                     <img id="img-grande-serena" src="serena-1.jpg" class="main-photo w-full h-full object-cover">
@@ -173,23 +172,22 @@
 
         <hr class="border-gray-200">
 
-        <!-- ================= CONCEPCIÓN ================= -->
+        <!-- ================= CONCEPCIÓN (Sin cama sencilla, solo matrimonial equipada) ================= -->
         <section id="concepcion">
             <h1 class="text-3xl font-semibold mb-2">Acogedor departamento en el centro de Concepción</h1>
             <div class="flex items-center text-sm font-medium mb-6">
                 <span class="mr-1 text-rose-500">★</span> 4.9 · <span class="underline ml-2">Concepción, Biobío, Chile</span>
             </div>
             
-            <!-- Galería Móvil (Carrusel horizontal deslizante) -->
+            <!-- Galería Móvil (Excluyendo foto de cama sencilla, usando conce-7 equipada) -->
             <div class="flex md:hidden overflow-x-auto no-scrollbar gap-2 h-[300px] mb-8 rounded-2xl">
                 <img src="conce-2.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
                 <img src="conce-1.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
                 <img src="conce-3.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
-                <img src="conce-4.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
                 <img src="conce-7.jpeg" class="min-w-[85%] h-full object-cover rounded-xl shadow-md">
             </div>
 
-            <!-- Galería PC (Interactiva / Dinámica) -->
+            <!-- Galería PC (Interactiva, solo cama matrimonial equipada) -->
             <div class="hidden md:grid grid-cols-4 gap-2 h-[400px] mb-8 rounded-2xl overflow-hidden shadow-md">
                 <div class="col-span-2 h-full bg-gray-900 flex items-center justify-center overflow-hidden">
                     <img id="img-grande-conce" src="conce-2.jpeg" class="main-photo w-full h-full object-cover object-center scale-105">
@@ -199,15 +197,15 @@
                     <img src="conce-3.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-3.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                 </div>
                 <div class="flex flex-col gap-2 h-full">
-                    <img src="conce-4.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-4.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                     <img src="conce-7.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-7.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
+                    <img src="conce-2.jpeg" onclick="cambiarFotoPrincipal('img-grande-conce', 'conce-2.jpeg')" class="w-full h-[196px] object-cover bg-gray-200 hover:opacity-85 transition cursor-pointer shadow-sm">
                 </div>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-12 relative">
                 <div class="lg:w-2/3 space-y-6">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-6">
-                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">4 huéspedes · 2 dormitorios · Cama matrimonial equipada · 2 baños</p></div>
+                        <div><h2 class="text-xl font-semibold">Anfitrión: Refugio del Mar</h2><p class="text-gray-500">4 huéspedes · Cama matrimonial equipada · 2 baños</p></div>
                     </div>
                     <p class="text-gray-700 leading-relaxed pb-6 border-b border-gray-200">Disfruta de la comodidad de este céntrico departamento en Concepción. Ideal para viajes de negocios o turismo, con excelente conectividad. (Estadía mínima de 2 noches).</p>
                     
@@ -266,10 +264,10 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer con Logo Clickeable al Inicio -->
     <footer class="bg-gray-100 border-t border-gray-200 mt-24 py-12 text-center text-gray-500 text-sm">
         <div class="max-w-7xl mx-auto px-4 space-y-4 flex flex-col items-center">
-            <div class="flex items-center gap-2">
+            <a href="#" class="flex items-center gap-2 group hover:opacity-80 transition">
                 <div class="w-8 h-8 bg-rose-50 rounded-lg flex items-center justify-center border border-rose-100 shadow-sm">
                     <svg class="w-5 h-5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 18c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1 2.5 1 4 1" />
@@ -284,7 +282,7 @@
                     </svg>
                 </div>
                 <span class="font-bold text-lg text-gray-700">Refugio del Mar</span>
-            </div>
+            </a>
             <p>Arriendos temporales en La Serena y Concepción · Contacto directo: +56 9 4968 1748</p>
             <p>© 2026 Refugio del Mar. Todos los derechos reservados.</p>
         </div>
